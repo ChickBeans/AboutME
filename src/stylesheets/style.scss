@@ -1,3 +1,7 @@
+@import "./mixin";
+
+// 変数
+
 $cYellow: #fcc634;
 $cGreen: #51d140;
 $cBlue: #3498fc;
@@ -8,6 +12,8 @@ $cBgGrey: $cBlack;
 $cBgBeigue: #e0dfd9;
 $cWhite: white;
 $cBgWhite: $cWhite;
+
+// ＊＊＊＊＊＊レイアウト＊＊＊＊＊＊＊＊＊＊＊
 
 * {
   font-size: 62.5%;
@@ -24,12 +30,13 @@ a {
   }
 }
 
+// 中央揃え
 .content-width {
   width: 90%;
   margin: 0 auto;
-  //   text-align: center;
 }
 
+// font
 .font-sm {
   font-size: 1.4rem;
   font-weight: 400;
@@ -47,6 +54,7 @@ a {
   font-weight: 400;
 }
 
+// margin-bottom
 .mb-sm {
   margin-bottom: 1.5rem;
 }
@@ -59,6 +67,8 @@ a {
 .mb-lg {
   margin-bottom: 7.5rem;
 }
+
+// padding-bottom
 .pd-sm {
   padding-bottom: 1.5rem;
 }
@@ -72,9 +82,16 @@ a {
   padding-bottom: 7.5rem;
 }
 
+// color
 .c--yellow {
   color: $cYellow;
 }
+// fontfamily
+.ff-impact {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+// テキストアンダーライン
 .bd-bm {
   position: relative;
   display: inline-block;
@@ -86,9 +103,24 @@ a {
     width: 120%;
     left: 50%;
     transform: translateX(-50%);
-    //   border-color: $cYellow;
   }
 }
+
+// ＊＊＊＊＊keyframes＊＊＊＊＊＊＊＊＊
+@keyframes kf-animation-title {
+  0% {
+    opacity: 0;
+    transform: translateY(-80%);
+  }
+  80% {
+    transform: translateY(20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+// ＊＊＊＊＊スタイル＊＊＊＊＊＊＊＊＊＊
 
 #container {
   background-color: $cBgGrey;
@@ -135,20 +167,55 @@ a {
     }
   }
 }
-// モバイルメニュー押下時
+
+.mobile-menu {
+  position: fixed;
+  text-align: center;
+  right: 50px;
+  top: 20px;
+  // z-index: -100;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+  &__logo {
+    @extend .ff-impact;
+    @extend .font-lg;
+  }
+  &__main {
+    list-style: none;
+  }
+  &__item {
+    & a {
+      color: $cBlack;
+      @extend .ff-impact;
+      @extend .font-lr;
+    }
+  }
+}
+
+// mobileMenuButton押下時
 .menu-open {
+  & .main {
+    &:hover {
+      cursor: pointer;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      background-color: rgba(34, 26, 26, 0.548);
+      box-shadow: 2px 4px 5px 5px rgba(34, 26, 26, 0.548);
+    }
+  }
   &#global-container {
     & #container {
       transition: all 1s;
       transform: translate(-220px, 100px);
-      &::after {
-        content: "";
-        display: block;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.3);
-      }
       & .header__mobile-menu__button {
         & .header__mobile-menu__bar {
           &:nth-of-type(1) {
@@ -174,28 +241,6 @@ a {
   }
 }
 
-.mobile-menu {
-  position: fixed;
-  text-align: center;
-  right: 50px;
-  top: 20px;
-  // z-index: -100;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.5s;
-  &__logo {
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    @extend .font-lg;
-  }
-  &__main {
-    list-style: none;
-  }
-  &__item {
-    color: $cBlack;
-    @extend .font-lr;
-  }
-}
-
 .main {
   width: 100%;
   padding-top: 5rem;
@@ -204,16 +249,11 @@ a {
 
 .about-me {
   padding-top: 25px;
-  //   @extend .content-width;
   width: 80%;
   margin: 0 auto;
   @extend .mb-lg;
-  &__inner {
-    // @extend .mb-lg;
-  }
   &__img-wrapper {
     width: 100%;
-    // height: 300px;
   }
   &__img {
     @extend .content-width;
@@ -222,7 +262,6 @@ a {
     border-radius: 50%;
     object-position: 14px;
     background-color: #a5a5a5;
-    // object-fit: cover;
   }
   &__body {
     color: $cWhite;
@@ -230,8 +269,14 @@ a {
   }
 
   &__title {
-    @extend .font-lg;
     @extend .mb-sm;
+    transition: all 0.5s;
+    transform: translateX(-1000px);
+  }
+
+  .char {
+    display: inline-block;
+    @extend .font-lg;
   }
 
   &__acc {
@@ -287,6 +332,27 @@ a {
   }
 }
 
+// textAnimation発火
+.inview {
+  &.about-me__title {
+    transform: translateX(0);
+    transition-timing-function: ease-out;
+  }
+  & .char {
+    @include animation(
+      $name: kf-animation-title,
+      $iteration-count: 1,
+      $duration: 0.8s
+    );
+    @for $i from 1 through 15 {
+      &:nth-of-type(#{$i}) {
+        animation-delay: 0.1s * $i;
+      }
+    }
+  }
+}
+
+// Career
 .career {
   @extend .mb-lr;
   &__inner {
@@ -376,12 +442,13 @@ a {
     }
     &-title {
       font-size: 25px;
-      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      @extend .ff-impact;
     }
     &-icon {
       display: block;
-      font-size: 60px;
+      font-size: 80px;
       padding: 25px;
+      margin: 0 auto;
     }
     &-descriptions {
       position: absolute;
@@ -397,9 +464,6 @@ a {
           transition-delay: 0.5s * $i;
         }
       }
-      // &:hover {
-      //   opacity: 1;
-      // }
     }
     &-description {
       font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -412,12 +476,9 @@ a {
     &-descriptions {
       opacity: 1;
     }
-    // opacity: 0;
     &::after {
       content: "";
       position: absolute;
-      // display: block;
-      // z-index: 100;
       top: 0;
       left: 0;
       right: 0;
@@ -470,7 +531,7 @@ a {
 }
 
 .footer {
-  height: 80px;
+  height: 10px;
   &__inner {
     display: flex;
     padding: 20px 0;

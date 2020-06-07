@@ -1,2 +1,139 @@
-h1 jojojo
-img(src="../images/top-image.jpg")
+doctype html
+html(lang='jp')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie-edge')
+    title FirstPortfolio
+  body
+    #global-container
+      #container
+        header.header
+          .header__inner
+            span.header__logo
+              a.header__logo(href='#') First
+                span.header__logo.c--yellow  Portfolio
+            button.header__mobile-menu__button#header__mobile-menu__button
+              span.header__mobile-menu__bar
+              span.header__mobile-menu__bar
+              span.header__mobile-menu__bar
+        main.main#main
+          section.about-me
+            .abount-me__inner
+              picture.about-me__img-wrapper
+                img.about-me__img(src='../images/top-image.jpg', alt='')
+                button#btn click
+              .about-me__body
+                h2.about-me__title.bd-bm#ani About Me
+                label.about-me__acc(for='lbl1') Details
+                input#lbl1.about-me__chk-box(type='checkbox')
+                .about-me__acc-show
+                  ul.about-me__acc-show__items
+                    li.about-me__acc-show__item NameInKanji：日下　璃勇
+                    li.about-me__acc-show__item Birth：1995/01/10
+                    li.about-me__acc-show__item Gender：Man
+                    li.about-me__acc-show__item Personality：Makezugirai, Challenger
+                    li.about-me__acc-show__item Hobby：Guitar, Walking
+                    li.about-me__acc-show__item Contact：kusaka0110ryu@gmail.com
+          section#career.career
+            .career__inner
+              h2.career__title.bd-bm#ani Career
+              .career__cards
+                .career__card
+                  picture.career__card__img-wrapper
+                    img.career__card__img(src='../images/hischool-img.jpg', alt='')
+                  .career__card__body
+                    p.career__card__body-title 石川県立金沢錦丘高等学校 10/04~13/03
+                    p.career__card__body-text ・普通科 入学
+                    p.career__card__body-text ・趣味のギターを始める
+                    p.career__card__body-text ・ファッションに興味を持つ
+                .career__card
+                  picture.career__card__img-wrapper
+                    img.career__card__img(src='../images/university-img.jpg', alt='')
+                  .career__card__body
+                    p.career__card__body-title 福井県立大学 14/04~18/03
+                    p.career__card__body-text ・経済学部経営学科 入学
+                    p.career__card__body-text ・軽音楽部、アコギサークル等に参加
+                    p.career__card__body-text ・様々なアルバイトを経験する
+                .career__card
+                  picture.career__card__img-wrapper
+                    img.career__card__img(src='../images/mitani-img.png', alt='')
+                  .career__card__body
+                    p.career__card__body-title 三谷コンピュータ株式会社 18/04~19/08
+                    p.career__card__body-text ・社内SEとして工事系システム開発を中心にヘルプデスクなどの業務を携わる
+                    p.career__card__body-text ・終身雇用、AIに職が奪われるという不安から手に職をつけるべくIT業界に入社
+                    p.career__card__body-text ・開発以外の業務の割合があまりにも多く、入社前の希望を叶えられず退職
+                .career__card
+                  picture.career__card__img-wrapper
+                    img.career__card__img(src='../images/hischool-img.jpg', alt='')
+                  .career__card__body
+                    p.career__card__body-title
+                      | 退職後〜現在
+                    p.career__card__body-text ・1人でお金を稼げないかという試みから期限付きでアフィリエイトに挑戦
+                    p.career__card__body-text ・期限満了後、もう一度IT業界で働きたいという希望を持ち転職活動中
+                    p.career__card__body-text ・HTML, CSS(Sass), Javascript, PHP, MySQLを勉強中
+          section#deliverbles.deliverbles
+            .deliverbles__inner
+              h2.deliverbles__title.bd-bm#ani Deliverbles
+          section#web-skills.web-skills
+            .web-skills__inner
+              h2.web-skills__title.bd-bm Web Skills
+              .web-skills__items
+                .web-skills__item
+                  p.web-skills__item-title HTML5/CSS3
+                  span.web-skills__item-icon.fas.fa-code
+                  ul.web-skills__item-descriptions.c--yellow
+                    li.web-skills__item-description BEM記法を学習
+                    li.web-skills__item-description レスポンシブ対応
+                .web-skills__item
+                  p.web-skills__item-title Sass
+                  span.web-skills__item-icon.fab.fa-sass
+                .web-skills__item
+                  p.web-skills__item-title Javascript
+                  span.web-skills__item-icon.fab.fa-js
+                .web-skills__item
+                  p.web-skills__item-title PHP
+                  span.web-skills__item-icon.fab.fa-php
+                .web-skills__item
+                  p.web-skills__item-title node.js
+                  span.web-skills__item-icon.fab.fa-php
+                .web-skills__item
+                  p.web-skills__item-title git, github
+                  span.web-skills__item-icon.fab.fa-php
+          section#plans.plans
+            .plans__inner
+              h2.plans__title.bd-bm#ani Plans
+              .plans__texts
+                p.plans__text フロントエンド技術の習得
+                p.plans__text Webデザインスキルの習得
+                p.plans__text フロントエンドの最新技術習得
+                p.plans__text マネジメント経験
+        footer.footer
+          .footer__wrapper
+            .footer__inner
+              picture.footer__img-wrapper
+                img.footer__img(src='../images/top-image.jpg', alt='')
+              nav.footer__nav
+                ul.footer__items
+                  li.footer__item
+                    a(href='#career') Career
+                  li.footer__item
+                    a(href='#deliverbles') Deliverbles
+                  li.footer__item
+                    a(href='#web-skills') Web Skills
+                  li.footer__item
+                    a(href='#plans') Plans
+            p.footer__copy-rights copyrights:FirstPortfolio2020
+      nav.mobile-menu
+        span.mobile-menu__logo
+          a.mobile-menu__logo(href='#') First
+            span.mobile-menu__logo.c--yellow  Portfolio
+        ul.mobile-menu__main
+          li.mobile-menu__item
+            a(href='#career') Career
+          li.mobile-menu__item
+            a(href='#deliverbles') Deliverbles
+          li.mobile-menu__item
+            a(href='#web-skills') Web Skills
+          li.mobile-menu__item
+            a(href='#plans') Plans
