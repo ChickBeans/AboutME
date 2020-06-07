@@ -14,6 +14,23 @@ module.exports = {
   module: {
     rules: [
       {
+        // ES6のトランスパイル
+        test: /\.js/,
+        exclude: /\node_modules/, // npm対象外
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              // babelのライブラリを束ねているプリセット
+              presets: [
+                ["@babel/preset-env", { targets: "> 30%, not dead" }],
+                // "@babel/preset-react",
+              ],
+            },
+          },
+        ],
+      },
+      {
         test: /\.(css|sass|scss)/,
         use: [
           {
@@ -38,7 +55,6 @@ module.exports = {
             loader: "file-loader",
             options: {
               esModule: false,
-              // 画像名と拡張子をそれぞれ保つ
               name: "images/[name]-[hash].[ext]",
               publicPath: "/",
             },
