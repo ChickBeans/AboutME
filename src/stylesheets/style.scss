@@ -105,6 +105,87 @@ a {
     transform: translateX(-50%);
   }
 }
+// ＊＊＊＊＊Animation＊＊＊＊＊＊＊＊＊
+
+// mobileMenuButton押下時のAnimation
+.menu-open {
+  & .main {
+    &:hover {
+      cursor: pointer;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      background-color: rgba(34, 26, 26, 0.548);
+      box-shadow: 2px 4px 5px 5px rgba(34, 26, 26, 0.548);
+    }
+  }
+  &#global-container {
+    & #container {
+      transition: all 1s;
+      transform: translate(-250px, 100px);
+      & .header__mobile-menu__button {
+        & .header__mobile-menu__bar {
+          &:nth-of-type(1) {
+            transform: translateY(10px) rotate(135deg);
+          }
+          &:nth-of-type(2) {
+            transform: translateX(-300px) rotate(1800deg);
+            opacity: 0;
+          }
+          &:nth-of-type(3) {
+            transform: translateY(-10px) rotate(-135deg);
+          }
+        }
+      }
+    }
+    & .mobile-menu {
+      opacity: 1;
+      visibility: visible;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// textAnimation
+.animate-title {
+  @extend .mb-sm;
+  transition: all 0.5s;
+  transform: translateX(-90%);
+  letter-spacing: 2px;
+  .char {
+    display: inline-block;
+    opacity: 0;
+    @extend .font-lg;
+    @extend .ff-impact;
+  }
+}
+.inview {
+  &.animate-title {
+    transform: translateX(0);
+    transition-timing-function: ease-out;
+  }
+  & .char {
+    @include animation(
+      $name: kf-animation-title,
+      $iteration-count: 1,
+      $duration: 0.8s
+    );
+    @for $i from 1 through 15 {
+      &:nth-of-type(#{$i}) {
+        animation-delay: 0.1s * $i;
+      }
+    }
+  }
+}
 
 // ＊＊＊＊＊keyframes＊＊＊＊＊＊＊＊＊
 @keyframes kf-animation-title {
@@ -128,12 +209,12 @@ a {
   box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.8);
 }
 
+// ******Header*******
 .header {
   position: fixed;
   width: 100%;
   background-color: $cBgWhite;
   z-index: 20;
-  //   @extend .mb-md;
   &__inner {
     display: flex;
     justify-content: space-between;
@@ -173,7 +254,6 @@ a {
   text-align: center;
   right: 50px;
   top: 20px;
-  // z-index: -100;
   opacity: 0;
   visibility: hidden;
   transition: 0.5s;
@@ -193,60 +273,13 @@ a {
   }
 }
 
-// mobileMenuButton押下時
-.menu-open {
-  & .main {
-    &:hover {
-      cursor: pointer;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      display: block;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 1000;
-      background-color: rgba(34, 26, 26, 0.548);
-      box-shadow: 2px 4px 5px 5px rgba(34, 26, 26, 0.548);
-    }
-  }
-  &#global-container {
-    & #container {
-      transition: all 1s;
-      transform: translate(-220px, 100px);
-      & .header__mobile-menu__button {
-        & .header__mobile-menu__bar {
-          &:nth-of-type(1) {
-            transform: translateY(10px) rotate(135deg);
-          }
-          &:nth-of-type(2) {
-            transform: translateX(-300px) rotate(1800deg);
-            opacity: 0;
-          }
-          &:nth-of-type(3) {
-            transform: translateY(-10px) rotate(-135deg);
-          }
-        }
-      }
-    }
-    & .mobile-menu {
-      opacity: 1;
-      visibility: visible;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
-}
-
 .main {
   width: 100%;
   padding-top: 5rem;
   background-color: $cBgGrey;
 }
 
+// ******About Me Section*******
 .about-me {
   padding-top: 25px;
   width: 80%;
@@ -267,18 +300,6 @@ a {
     color: $cWhite;
     text-align: center;
   }
-
-  &__title {
-    @extend .mb-sm;
-    transition: all 0.5s;
-    transform: translateX(-1000px);
-  }
-
-  .char {
-    display: inline-block;
-    @extend .font-lg;
-  }
-
   &__acc {
     position: relative;
     display: block;
@@ -332,27 +353,7 @@ a {
   }
 }
 
-// textAnimation発火
-.inview {
-  &.about-me__title {
-    transform: translateX(0);
-    transition-timing-function: ease-out;
-  }
-  & .char {
-    @include animation(
-      $name: kf-animation-title,
-      $iteration-count: 1,
-      $duration: 0.8s
-    );
-    @for $i from 1 through 15 {
-      &:nth-of-type(#{$i}) {
-        animation-delay: 0.1s * $i;
-      }
-    }
-  }
-}
-
-// Career
+// ******Career Section*******
 .career {
   @extend .mb-lr;
   &__inner {
@@ -401,6 +402,7 @@ a {
   }
 }
 
+// ******deliverbles Section*******
 .deliverbles {
   &__inner {
     text-align: center;
@@ -415,6 +417,7 @@ a {
   }
 }
 
+// ******Web Skills Section*******
 .web-skills {
   &__inner {
     @extend .content-width;
@@ -489,10 +492,10 @@ a {
   }
 }
 
+// ******Plans Section*******
 .plans {
   &__inner {
     @extend .content-width;
-    @extend .pd-lr;
     text-align: center;
   }
   &__title {
@@ -530,6 +533,7 @@ a {
   }
 }
 
+// ******footer*******
 .footer {
   height: 10px;
   &__inner {
