@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/stylesheets/style.scss"],"names":[],"mappings":"AAAA;EACI,aAAa","file":"./stylesheets/main.css","sourcesContent":["h1 {\n    color: orange;\n}"],"sourceRoot":""}
