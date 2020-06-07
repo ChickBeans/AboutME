@@ -1,0 +1,26 @@
+{
+  "name": "first-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChickBeans/AboutME.git"
+  },
+  "author": "Kusaka Ryu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChickBeans/AboutME/issues"
+  },
+  "homepage": "https://github.com/ChickBeans/AboutME#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
