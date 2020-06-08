@@ -1,30 +1,22 @@
-import ScrollObserver from './ScrollObserve.js';
-import TextAnimation from './TextAnimation.js';
+import EditClass from "./EditClass.js";
+import ScrollObserver from "./ScrollObserve.js";
+import TextAnimation from "./TextAnimation.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const globalContainer = document.getElementById("global-container");
-  const mobileMenuBtn = document.getElementById("header__mobile-menu__button");
+  const mobileMenu = new EditClass(
+    "#header__mobile-menu__button",
+    "#global-container"
+  );
+  mobileMenu.tglCls("click", "menu-open");
 
-  const _toggleClass = () => {
-    globalContainer.classList.toggle("menu-open");
-  };
+  const main = new EditClass("#main", "#global-container");
+  main.removeCls("click", "menu-open");
 
-  mobileMenuBtn.addEventListener("click", _toggleClass);
-
-  const main = document.getElementById("main");
-
-  const _removeClass = () => {
-    globalContainer.classList.remove("menu-open");
-  };
-
-  main.addEventListener("click", function () {
-    globalContainer.classList.remove("menu-open");
-  });
-
-  const mobileItems = document.querySelectorAll(".mobile-menu__item");
-  mobileItems.forEach((item) => {
-    item.addEventListener("click", _removeClass);
-  });
+  const mobileMenuItems = new EditClass(
+    ".mobile-menu__item",
+    "#global-container"
+  );
+  mobileMenuItems.removeCls("click", "menu-open");
 
   // ********observer********
   const cb = function (el, isIntersecting) {

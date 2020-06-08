@@ -31,4 +31,5 @@ class ScrollObserver {
       this.els.forEach((el) => io.observe(el));
     }
   }
+  
   export default ScrollObserver;

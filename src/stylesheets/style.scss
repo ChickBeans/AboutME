@@ -123,7 +123,7 @@ a {
       bottom: 0;
       z-index: 1000;
       background-color: rgba(34, 26, 26, 0.548);
-      box-shadow: 2px 4px 5px 5px rgba(34, 26, 26, 0.548);
+      box-shadow: 6px 5px 18px 3px rgba(34, 26, 26, 0.548);
     }
   }
   &#global-container {
@@ -406,6 +406,7 @@ a {
 .deliverbles {
   &__inner {
     text-align: center;
+    width: 100%;
   }
   &__title {
     @extend .font-lg;
@@ -416,7 +417,6 @@ a {
     }
   }
 }
-
 // ******Web Skills Section*******
 .web-skills {
   &__inner {
