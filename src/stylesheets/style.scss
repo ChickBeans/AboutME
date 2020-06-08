@@ -416,6 +416,47 @@ a {
       border-color: $cBlue;
     }
   }
+  &__slide {
+    margin: 0 auto;
+    border: 1px solid $cBlue;
+    width: 95%;
+    background-color: $cBlue;
+  }
+  &__main-image {
+    max-width: 100%;
+  }
+  &__toolbar {
+    overflow: hidden;
+    text-align: center;
+  }
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    // @extend .mb-lr;
+  }
+  & #prev {
+    opacity: 0.6;
+    @extend .font-lr;
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+  & #next {
+    opacity: 0.6;
+    @extend .font-lr;
+    font-weight: 900;
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+  & #page {
+    @extend .font-md;
+    color: white;
+  }
 }
 // ******Web Skills Section*******
 .web-skills {
