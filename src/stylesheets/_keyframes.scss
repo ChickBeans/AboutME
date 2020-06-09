@@ -1,0 +1,55 @@
+// ＊＊＊＊＊keyframes＊＊＊＊＊＊＊＊＊
+@keyframes kf-animation-title {
+    0% {
+      opacity: 0;
+      transform: translateY(-80%);
+    }
+    80% {
+      transform: translateY(20%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes kf-bound-text {
+    0% {
+      transform: translate(-150%, -100%);
+    }
+    40% {
+      transform: translate(-100%, 30%) rotate(45deg);
+    }
+    60% {
+      transform: translate(-80%, -70%);
+    }
+    80% {
+      transform: translate(-60%, 0);
+    }
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
+  
+  @keyframes kf-zoom-text {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      color: $cWhite;
+    }
+    80% {
+      transform: translate(-50%, -50%) scale(2);
+      color: $cYellow;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  @keyframes kf-starwars-text {
+    0% {
+      transform: translate(-50%, 150%) rotateX(-50deg) scale(2);
+      color: $cWhite;
+    }
+    100% {
+      transform: translate(-50%, -250%) rotateX(-25deg) scale(0.5);
+      color: $cYellow;
+    }
+  }

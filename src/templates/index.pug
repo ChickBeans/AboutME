@@ -13,6 +13,18 @@ html(lang='jp')
             span.header__logo
               a.header__logo(href='#') First
                 span.header__logo.c--yellow  Portfolio
+            nav.header__nav
+                ul.header__items
+                  li.header__item
+                    a(href='#career') Career
+                  li.header__item
+                    a(href='#deliverbles') Deliverbles
+                  li.header__item
+                    a(href='#web-skills') Web Skills
+                  li.header__item
+                    a(href='#plans') Plans
+                  li.header__item
+                    a(href='#contact') Contact
             button.header__mobile-menu__button#header__mobile-menu__button
               span.header__mobile-menu__bar
               span.header__mobile-menu__bar
@@ -20,20 +32,21 @@ html(lang='jp')
         main.main#main
           section.about-me
             .abount-me__inner
-              picture.about-me__img-wrapper
-                img.about-me__img(src='../images/top-image.jpg', alt='')
-              .about-me__body
-                h2.about-me__title.bd-bm.animate-title About Me
-                label.about-me__acc(for='lbl1') Details
-                input#lbl1.about-me__chk-box(type='checkbox')
-                .about-me__acc-show
-                  ul.about-me__acc-show__items
-                    li.about-me__acc-show__item NameInKanji：** **
-                    li.about-me__acc-show__item Birth：****/**/**
-                    li.about-me__acc-show__item Gender：Man
-                    li.about-me__acc-show__item Personality：Makezugirai, Challenger
-                    li.about-me__acc-show__item Hobby：Guitar, Walking
-                    li.about-me__acc-show__item Contact：*********@gmail.com
+              .about-me__container
+                picture.about-me__img-wrapper
+                  img.about-me__img(src='../images/top-image.jpg', alt='')
+                .about-me__body
+                  h2.about-me__title.bd-bm.animate-title About Me
+                  label.about-me__acc(for='lbl1') Details
+                  input#lbl1.about-me__chk-box(type='checkbox')
+                  .about-me__acc-show
+                    ul.about-me__acc-show__items
+                      li.about-me__acc-show__item NameInKanji：** **
+                      li.about-me__acc-show__item Birth：****/**/**
+                      li.about-me__acc-show__item Gender：Man
+                      li.about-me__acc-show__item Personality：Makezugirai, Challenger
+                      li.about-me__acc-show__item Hobby：Guitar, Walking
+                      li.about-me__acc-show__item Contact：*********@gmail.com
           section#career.career
             .career__inner
               h2.career__title.bd-bm.animate-title Career
@@ -113,7 +126,7 @@ html(lang='jp')
                   i.web-skills__item-icon.fab.fa-node
                   ul.web-skills__item-descriptions.c--yellow
                     li.web-skills__item-description ・npmを利用したWeb開発
-                    li.web-skills__item-description ・webpackの利用で安全な環境構築
+                    li.web-skills__item-description ・webpack環境下での開発
                 .web-skills__item
                   p.web-skills__item-title github
                   i.web-skills__item-icon.fab.fa-github
