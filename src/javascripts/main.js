@@ -18,35 +18,40 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   mobileMenuItems.removeCls("click", "menu-open");
 
+  const showText = new EditClass(".web-skills__item");
+
+  showText.addCls("mousemove", "show-text");
+  showText.removeCls("mouseout", "show-text");
+
   // *******Slide Show***********
-  const images = ['../images/airbnb-img.png', '../images/iSara-img.png', '../images/airbnb-img.png'];
+  const images = ["airbnb-img.png", "iSara-img.png", "airbnb-img.png"];
   let current = 0;
 
   const changeImage = (num) => {
     if (current + num >= 0 && current + num < images.length) {
       current += num;
-      document.querySelector('.deliverbles__main-image').src = images[current];
+      document.querySelector(".deliverbles__main-image").src = images[current];
       pageNum();
     }
   };
 
-const pageNum = () => {
-  document.getElementById('page').textContent = `${current + 1}/${images.length}`;
-}
+  const pageNum = () => {
+    document.getElementById("page").textContent = `${current + 1}/${
+      images.length
+    }`;
+  };
 
-pageNum();
+  pageNum();
 
-  const prev = document.getElementById('prev');
-  console.log('prev: ', prev);
-  const next = document.getElementById('next');
-  prev.addEventListener('click', function() {
+  const prev = document.getElementById("prev");
+
+  const next = document.getElementById("next");
+  prev.addEventListener("click", function () {
     changeImage(-1);
   });
-  next.addEventListener('click', function() {
+  next.addEventListener("click", function () {
     changeImage(1);
   });
-  // next.addEventListener('click', changeImage(1));
-  
 
   // ********observer********
   const cb = function (el, isIntersecting) {

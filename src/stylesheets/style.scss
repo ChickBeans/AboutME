@@ -4,10 +4,11 @@
 
 $cYellow: #fcc634;
 $cGreen: #51d140;
-$cBlue: #3498fc;
+$cBlue: rgb(60, 97, 199);
 $cPurple: #b38ed8;
 $cRed: #ff6f6f;
 $cBlack: #626262;
+$cOrange: rgb(236, 137, 44);
 $cBgGrey: $cBlack;
 $cBgBeigue: #e0dfd9;
 $cWhite: white;
@@ -157,7 +158,8 @@ a {
 
 // textAnimation
 .animate-title {
-  @extend .mb-sm;
+  @extend .mb-md;
+  color: $cWhite;
   transition: all 0.5s;
   transform: translateX(-90%);
   letter-spacing: 2px;
@@ -201,6 +203,47 @@ a {
     transform: translateY(0);
   }
 }
+@keyframes kf-bound-text {
+  0% {
+    transform: translate(-150%, -100%);
+  }
+  40% {
+    transform: translate(-100%, 30%) rotate(45deg);
+  }
+  60% {
+    transform: translate(-80%, -70%);
+  }
+  80% {
+    transform: translate(-60%, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes kf-zoom-text {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    color: $cWhite;
+  }
+  80% {
+    transform: translate(-50%, -50%) scale(2);
+    color: $cYellow;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@keyframes kf-starwars-text {
+  0% {
+    transform: translate(-50%, 150%) rotateX(-50deg) scale(2);
+    color: $cWhite;
+  }
+  100% {
+    transform: translate(-50%, -250%) rotateX(-25deg) scale(0.5);
+    color: $cYellow;
+  }
+}
 // ＊＊＊＊＊スタイル＊＊＊＊＊＊＊＊＊＊
 
 #container {
@@ -214,12 +257,13 @@ a {
   position: fixed;
   width: 100%;
   background-color: $cBgWhite;
-  z-index: 20;
+  z-index: 100;
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 50px;
+    z-index: 100;
     @extend .content-width;
   }
 
@@ -361,9 +405,6 @@ a {
     @extend .content-width;
   }
   &__title {
-    color: $cWhite;
-    @extend .font-lg;
-    @extend .mb-md;
     &.bd-bm::after {
       border-color: $cGreen;
     }
@@ -407,10 +448,9 @@ a {
   &__inner {
     text-align: center;
     width: 100%;
+    @extend .mb-lr;
   }
   &__title {
-    @extend .font-lg;
-    @extend .mb-lr;
     color: white;
     &.bd-bm::after {
       border-color: $cBlue;
@@ -465,8 +505,6 @@ a {
     text-align: center;
   }
   &__title {
-    @extend .font-lg;
-    @extend .mb-lr;
     color: $cWhite;
     &.bd-bm::after {
       border-color: $cPurple;
@@ -479,10 +517,15 @@ a {
     @extend .mb-lr;
   }
   &__item {
+    // display: flex;
+    width: 90%;
+    margin: 0 auto;
+    flex-direction: column;
     position: relative;
     color: $cBgGrey;
-    &:hover {
-      cursor: pointer;
+    &-icons {
+      display: flex;
+      justify-content: center;
     }
     &-title {
       font-size: 25px;
@@ -490,8 +533,8 @@ a {
     }
     &-icon {
       display: block;
-      font-size: 80px;
-      padding: 25px;
+      font-size: 100px;
+      padding: 25px 0;
       margin: 0 auto;
     }
     &-descriptions {
@@ -500,39 +543,72 @@ a {
       list-style: none;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-150%, -80%);
       z-index: 200;
       opacity: 0;
-      @for $i from 1 through 10 {
-        &:nth-of-type(#{$i}) {
-          transition-delay: 0.5s * $i;
-        }
-      }
     }
     &-description {
       font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      @extend .font-lr;
+      @extend .font-md;
     }
   }
 }
-.show-text {
-  &.web-skills__item {
-    &-descriptions {
-      opacity: 1;
+// hover時アニメーション
+.web-skills {
+  &__item {
+    overflow: hidden;
+    &:nth-of-type(odd) {
+      &:hover {
+        & .web-skills__item-descriptions {
+          opacity: 1;
+          @include animation(
+            $name: kf-bound-text,
+            $duration: 1s,
+            $iteration-count: 1
+          );
+        }
+      }
     }
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      vertical-align: bottom;
-      background-color: $cBlack;
+    &:nth-of-type(even) {
+      &:hover {
+        & .web-skills__item-descriptions {
+          opacity: 1;
+          @include animation(
+            $name: kf-zoom-text,
+            $duration: 1s,
+            $iteration-count: 1
+          );
+        }
+      }
+    }
+    &:nth-of-type(3n) {
+      &:hover {
+        & .web-skills__item-descriptions {
+          opacity: 1;
+          @include animation(
+            $name: kf-starwars-text,
+            $duration: 2.2s,
+            $iteration-count: infinite
+          );
+        }
+      }
+    }
+    &:hover {
+      cursor: pointer;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $cBlack;
+        border-radius: 5px;
+        z-index: 5;
+      }
     }
   }
 }
-
 // ******Plans Section*******
 .plans {
   &__inner {
@@ -540,8 +616,6 @@ a {
     text-align: center;
   }
   &__title {
-    @extend .font-lg;
-    @extend .mb-md;
     color: $cWhite;
     &.bd-bm::after {
       border-color: $cRed;
@@ -573,7 +647,51 @@ a {
     }
   }
 }
-
+// ******contact*********
+.contact {
+  &__inner {
+    @extend .content-width;
+    text-align: center;
+  }
+  &__title {
+    &.bd-bm:after {
+      border-color: $cOrange;
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    @extend .font-sm;
+    @extend .mb-lr;
+    &-title, &-name, &-email, &-textarea{
+      border-radius: 2px;
+      border: 2px inset $cOrange;
+      outline: none;
+      padding: 1rem;
+      @extend .mb-sm;
+    }
+    &-button {
+      margin: 0 auto;
+      width: 50%;
+      @extend .font-lr;
+      font-weight: 600;
+      border-radius: 10px;
+      opacity: 0.8;
+      border: 2px solid $cOrange;
+      color: $cOrange;
+      box-shadow: 2px 2px 3px 3px rgba(34, 26, 26, 0.548);
+      transform: translate(-5px, -5px);
+      outline: none;
+      &:active {
+        opacity: 1;
+        box-shadow: none;
+        background-color: $cOrange;
+        color: white;
+        transform: translate(0, 0);
+      }
+    }
+  }
+}
 // ******footer*******
 .footer {
   height: 10px;
