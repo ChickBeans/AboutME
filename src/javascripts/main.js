@@ -3,25 +3,22 @@ import ScrollObserver from "./ScrollObserve.js";
 import TextAnimation from "./TextAnimation.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const mobileMenu = new EditClass(
+
+  // ********add/remove/toggleclass*************
+  const openMenuBtnClick = new EditClass(
     "#header__mobile-menu__button",
     "#global-container"
   );
-  mobileMenu.tglCls("click", "menu-open");
+  openMenuBtnClick.tglCls("click", "menu-open");
 
   const main = new EditClass("#main", "#global-container");
   main.removeCls("click", "menu-open");
 
-  const mobileMenuItems = new EditClass(
+  const closeMenuItemsClick = new EditClass(
     ".mobile-menu__item",
     "#global-container"
   );
-  mobileMenuItems.removeCls("click", "menu-open");
-
-  const showText = new EditClass(".web-skills__item");
-
-  showText.addCls("mousemove", "show-text");
-  showText.removeCls("mouseout", "show-text");
+  closeMenuItemsClick.removeCls("click", "menu-open");
 
   // *******Slide Show***********
   const images = ["airbnb-img.png", "iSara-img.png", "airbnb-img.png"];
