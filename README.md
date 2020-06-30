@@ -1,3 +1,5 @@
+### siteurl: https://aboutme-first-portfolio.netlify.app/
+
 # AboutME Firstportfolio
 
 ## 盛り込み要素
@@ -27,5 +29,3 @@
 3. グローバルトップページボタンの設置（これはすぐ）
 4. plansセクションのデザイン変更（PC時）
 5. お問合せフォームの実装（node.jsで）
-
-### 個人情報を含んでいるので、公開すべきかどうか悩ましいところ
